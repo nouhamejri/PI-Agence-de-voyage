@@ -39,5 +39,20 @@ public class ReservationServiceImpl implements ReservationService  {
 		return resRepo.findAll();
 
 	}
+	
+	@Override
+	public void cancelReservation(Long id) {
+		try {
+			resRepo.deleteById(id);
+		}catch (Exception e) {
+			log.error("error while cancel Reservation "+e.getMessage());
+		}
+		
+	}
+
+	@Override
+	public Long countRservations() {
+		return resRepo.countRservations();
+	}
 
 }
